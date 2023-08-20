@@ -25,8 +25,8 @@ Mind map of the book arguments first `Domain driven design`:
 
 ```mermaid
 graph
-    B[Domain driven design]
-    click B "docs/domain_driven_design.md" "Domain driven design"
+    B[Good design]
+    click B "docs/good_design.md" "Good design"
     B --> P[Patterns]
     P --> Q[Repositories]
     Q --> O[Orm depends on model]
