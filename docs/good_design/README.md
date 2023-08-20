@@ -33,4 +33,4 @@ DIP means that the code should not depend on techical details but on the abstrac
 
 ## Conclusions
 
-In conclusion, a good design is a design that is easy to change and maintain with no or little effort. To achieve this, we can use the `Dependency Inversion Principle` (DIP) to decouple the code from the technical details and the `layered architecture` to organize the code in layers with a specific responsibility.
+In conclusion, a good design is a design that is easy to change and maintain with no or little effort. To achieve this, we can use the `Dependency Inversion Principle` (DIP) to decouple the code from the technical details and the `layered architecture` to organize the code in layers with a specific responsibility. The folder [patterns](./patterns) gives the main patterns that can be used to achieve a good design.

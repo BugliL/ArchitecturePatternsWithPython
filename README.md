@@ -23,22 +23,18 @@ Mind map of the book arguments first `Domain driven design`:
 graph
     B[Good design]
     B --> P[Patterns]
-    P --> Q[Repositories]
-    Q --> O[Orm depends on model]
-    P --> R[Services]
-    R --> S[Unit of work]
+    P --> Q[Repository]
+    P --> R[Service layer]
+    P --> S[Unit of work]
+    P --> T[Aggregate pattern]
+    T --> H[Invariants]
+    T --> I[Consistency]
+    T --> J[Constraitns]
 
     B --> E[Domain modelling]
     E --> D[Value objects vs entities]
     E --> F[Domain testing]
-
-    E --> G[Aggregates]
-    G --> H[Invariants]
-    G --> I[Consistency]
-    G --> J[Constraitns]
 ```
-
-The book, starts with the [Good design](docs/good_design.md) argument.
 
 Mind map of part 2 `Event driven microservices`:
 
