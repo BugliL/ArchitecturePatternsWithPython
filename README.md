@@ -28,7 +28,6 @@ graph
     P --> R[Services]
     R --> S[Unit of work]
 
-
     B --> E[Domain modelling]
     E --> D[Value objects vs entities]
     E --> F[Domain testing]
@@ -37,12 +36,11 @@ graph
     G --> H[Invariants]
     G --> I[Consistency]
     G --> J[Constraitns]
-
-
-
 ```
 
-then `Event driven microservices`:
+The book, starts with the [Good design](docs/good_design.md) argument.
+
+Mind map of part 2 `Event driven microservices`:
 
 ```mermaid
 graph
