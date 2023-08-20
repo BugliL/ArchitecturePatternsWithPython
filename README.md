@@ -5,11 +5,28 @@ Most of my focus is on applying the concepts to my own Django projects but I try
 
 ## Introduction
 
+Complexity is the enemy of software.
+There are 3 tools that can help us fight complexity:
+
+1. **Test Driven Development (TDD)** helps us in writing code that is correct and easy to change.
+2. **Domain Driven Design (DDD)**, helps us to focus on the core of the problem
+3. **Event Driven Architecture (EDA)**, helps us to decouple our code and software components
+
+It's not easy and clear how to apply these tools in a Django project.
+
+## Index of Arguments
+
+Here there are 2 main mind maps that can be used to organize the arguments of the book. The first is about domain driven design and the second is about event driven microservices. The TDD tool is distributed in each argument.
+
+> Info  
+> Each node of the book mind map is a link to the corresponding argument in the book and can be clicked to open the argument directly
+
 Mind map of the book arguments first `Domain driven design`:
 
 ```mermaid
 graph
     B[Domain driven design]
+    click B "docs/domain_driven_design.md" "Domain driven design"
     B --> P[Patterns]
     P --> Q[Repositories]
     Q --> O[Orm depends on model]
