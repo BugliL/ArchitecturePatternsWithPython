@@ -17,16 +17,11 @@ It's not easy and clear how to apply these tools in a Django project.
 ## Index of Arguments
 
 Here there are 2 main mind maps that can be used to organize the arguments of the book. The first is about domain driven design and the second is about event driven microservices. The TDD tool is distributed in each argument.
-
-> Info  
-> Each node of the book mind map is a link to the corresponding argument in the book and can be clicked to open the argument directly
-
 Mind map of the book arguments first `Domain driven design`:
 
 ```mermaid
 graph
     B[Good design]
-    click B "docs/good_design.md" "Good design"
     B --> P[Patterns]
     P --> Q[Repositories]
     Q --> O[Orm depends on model]
