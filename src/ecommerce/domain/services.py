@@ -7,7 +7,7 @@ from . import exceptions
 __all__ = ["allocate", "is_valid_sku"]
 
 
-def is_valid_sku(sku:str, batches: List[Batch]) -> bool:
+def is_valid_sku(sku: str, batches: List[Batch]) -> bool:
     """
     Check if sku is valid
     """

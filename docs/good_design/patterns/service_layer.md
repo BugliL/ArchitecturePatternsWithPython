@@ -29,4 +29,6 @@ classDiagram
     Batch <.. DomainService
     Batch .. OrderLine
 
+    <<Abstract>> AbstractRepository
+
 ```
