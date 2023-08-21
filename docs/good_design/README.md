@@ -31,6 +31,8 @@ What is the best way to organize the code in these layers? The answer is the `De
 
 DIP means that the code should not depend on techical details but on the abstractions so that the code can be easily changed if the domain and the business logic needs it.
 
-## Conclusions
+In conclusion, a good design is a design that is easy to change and maintain with no or little effort. To achieve this, we can use the `Dependency Inversion Principle` (DIP) to decouple the code from the technical details and the `layered architecture` to organize the code in layers with a specific responsibility.
 
-In conclusion, a good design is a design that is easy to change and maintain with no or little effort. To achieve this, we can use the `Dependency Inversion Principle` (DIP) to decouple the code from the technical details and the `layered architecture` to organize the code in layers with a specific responsibility. The folder [patterns](./patterns) gives the main patterns that can be used to achieve a good design.
+The folder [patterns](./patterns) gives the main patterns that can be used to achieve a good design.
+
+On the other hand [domain modeling](./domain_modeling/) is the key to create a clear and expressive good design enforcing the business rules and functions.
