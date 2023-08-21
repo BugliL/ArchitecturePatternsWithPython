@@ -1,7 +1,9 @@
 from .product import Product
 from .batch import Batch
 from .order_line import OrderLine
-from .exceptions import OutOfStockError
+from . import exceptions
+from adapters import FakeRepository
+from . import services
 import pytest
 
 
@@ -19,7 +21,7 @@ def test_when_more_unit_allocated_than_available_then_raises_out_of_stock_except
     batch = Batch(reference="batch-002", product=product, qty=20)
     order_line = OrderLine(reference="order-002", sku=product.sku, qty=21)
 
-    with pytest.raises(OutOfStockError):
+    with pytest.raises(exceptions.OutOfStockError):
         batch.allocate(order_line)
 
 
@@ -30,3 +32,21 @@ def test_when_product_sku_does_not_match_order_line_sku_than_return_false():
     order_line = OrderLine(reference="order-003", sku=pen.sku, qty=11)
 
     assert batch.can_allocate(order_line) is False
+
+
+def test_returns_allocation():
+    pencil = Product(sku="Pencil")
+    line = OrderLine(reference="o1", sku="Pencil", qty=10)
+    batch = Batch(reference="b1", product=pencil, qty=100)
+    repo = FakeRepository([batch])
+    result = services.allocate(line, repo)
+    assert result == "b1"
+
+
+def test_error_for_invalid_sku():
+    pencil = Product(sku="Pencil")
+    line = OrderLine(reference="o1", sku="NONEXISTENTSKU", qty=10)
+    batch = Batch(reference="b1", product=pencil, qty=100)
+    repo = FakeRepository([batch])
+    with pytest.raises(exceptions.InvalidSku, match="Invalid sku NONEXISTENTSKU"):
+        services.allocate(line, repo)

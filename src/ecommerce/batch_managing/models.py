@@ -15,7 +15,7 @@ class Batch(models.Model):
     @staticmethod
     def update_from_domain(batch: domain.Batch):
         """Updates a Django model from a domain object."""
-        
+
         # Here is used a try/except block to avoid problems with
         # additional fields that should not be null.
         try:

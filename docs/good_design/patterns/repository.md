@@ -44,18 +44,4 @@ classDiagram
 ### Testing with repositories
 
 Using a repository to persist data makes testing easier. The repository can be mocked and the domain entities can be tested without a database.
-
-```python
-class FakeRepository(AbstractRepository):
-    def __init__(self, items):
-        self._items = set(items)
-
-    def add(self, item):
-        self._items.add(item)
-
-    def get(self, reference):
-        return next((item for item in self._items if item.reference == reference), None)
-
-    def list(self):
-        return list(self._items)
-```
+In the domain source code there are tests made using the `fake repository` implemetation.
