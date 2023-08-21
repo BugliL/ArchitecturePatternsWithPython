@@ -12,7 +12,7 @@ Software systems often start with the promise of order but gradually descend int
 Using both encapsulation and abstraction can be created a `layered architecture`. Each layer has a specific responsibility and let group each component to a specific layer. The most common layered architecture is the 3 layers architecture, where the layers are
 
 ```mermaid
-graph LR
+graph BT
     A[Presentation]
     A --> B[Business logic]
     B --> C[Data access]
@@ -30,6 +30,15 @@ What is the best way to organize the code in these layers? The answer is the `De
 - Abstractions should not depend on details. Details should depend on abstractions.
 
 DIP means that the code should not depend on techical details but on the abstractions so that the code can be easily changed if the domain and the business logic needs it.
+
+Using DIP on the layered architecture result in something like this
+
+```mermaid
+graph BT
+    A[Presentation]
+    A --> B[Business logic]
+    C[Data access] --> B
+```
 
 In conclusion, a good design is a design that is easy to change and maintain with no or little effort. To achieve this, we can use the `Dependency Inversion Principle` (DIP) to decouple the code from the technical details and the `layered architecture` to organize the code in layers with a specific responsibility.
 
