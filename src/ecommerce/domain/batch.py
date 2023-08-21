@@ -1,7 +1,9 @@
 from .exceptions import OutOfStockError
 
+from adapters.domain_model import DomainModel
 
-class Batch:
+
+class Batch(DomainModel):
     def __init__(self, reference, product, qty):
         self.reference = reference
         self.product = product

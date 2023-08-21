@@ -1,5 +1,5 @@
 from adapters import DjangoRepository
-import models
+from . import models
 
 batch_repository = DjangoRepository(models.Batch)
 

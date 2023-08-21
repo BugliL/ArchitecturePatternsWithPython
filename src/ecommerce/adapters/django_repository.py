@@ -6,7 +6,6 @@ class DjangoRepository(AbstractRepository):
         self.model_class = model_class
 
     def add(self, item):
-        super().add(item)
         self.update(item)
 
     def update(self, item):

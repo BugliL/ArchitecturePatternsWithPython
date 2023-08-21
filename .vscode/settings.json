@@ -3,5 +3,5 @@
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "python.formatting.provider": ".venv/bin/black",
-  "conventionalCommits.scopes": ["domain modelling"]
+  "conventionalCommits.scopes": ["domain modelling", "django integration"]
 }

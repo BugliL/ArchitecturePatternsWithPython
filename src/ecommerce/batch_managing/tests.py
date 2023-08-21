@@ -1,8 +1,8 @@
 from django.test import TestCase
 
-import repository
+from .repositories import batch_repository
 import domain
-import models
+from . import models
 
 
 class TestBatch(TestCase):
@@ -12,8 +12,7 @@ class TestBatch(TestCase):
         cls.batch = domain.Batch(reference="batch-001", product=cls.product, qty=20)
 
     def test_when_batch_added_to_repository_it_should_be_saved(self):
-        repository = repository.BatchRepository()
-        repository.add(self.product)
+        repository = batch_repository
         repository.add(self.batch)
 
         batch = models.Batch.objects.get(reference=self.batch.reference)
