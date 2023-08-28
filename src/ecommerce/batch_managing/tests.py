@@ -25,24 +25,19 @@ class TestBatchRepository(TestCase):
 
 
 class TestBatchUnitOfWork(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        services.insert_batch(reference="batch1", sku="HIPSTER-WORKBENCH", qty=100)
-
     def test_uow_can_retrieve_a_batch_and_allocate_to_it(self):
-        with DjangoUnitOfWork(batch_repository) as uow:
-            batch = uow.repository.get(reference="batch1")
-            order_line = domain.OrderLine(reference="o1", sku="HIPSTER-WORKBENCH", qty=10)
+        batch_reference = "batch1"
+        product_sku = "HIPSTER-WORKBENCH"
+
+        services.insert_batch(reference=batch_reference, sku=product_sku, qty=100)
+        with DjangoUnitOfWork([batch_repository, order_line_repository]):
+            """
+            Tutto quello che viene ripreso dalla repository viene messo in una lista
+            Che viene utilizzata dentro il contesto del DjangoUnitOfWork
+            """
+            batch = batch_repository.get(reference=batch_reference)
+            order_line = domain.OrderLine(reference="o1", sku=product_sku, qty=10)
             batch.allocate(order_line)
-            
-            # TODO: spostare questo
-            # order_line_repository.update(order_line)
-            
 
-        for batch in models.Batch.objects.all():
-            print(batch.reference, batch.available_qty, batch.order_line)
-
-        batchref = services.get_allocated_batch_ref(
-            reference="o1", sku="HIPSTER-WORKBENCH"
-        )
-        assert batchref == "batch1"
+        batchref = services.get_allocated_batch_ref(reference="o1", sku=product_sku)
+        assert batchref == batch_reference

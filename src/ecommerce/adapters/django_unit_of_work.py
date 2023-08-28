@@ -1,12 +1,12 @@
 from .abstract_unit_of_work import AbstractUnitOfWork
 from .django_repository import DjangoRepository
 from django.db import transaction
-from typing_extensions import Self
+from typing_extensions import Self, List
 
 
 class DjangoUnitOfWork(AbstractUnitOfWork):
-    def __init__(self, repository: DjangoRepository):
-        self.repository = repository
+    def __init__(self, repositories: List[DjangoRepository]):
+        self.repositories = repositories
         self._transaction_context = None
 
     def __enter__(self) -> Self:
@@ -24,8 +24,8 @@ class DjangoUnitOfWork(AbstractUnitOfWork):
         self._transaction_context = None
 
     def commit(self) -> None:
-        for item in self.repository.list():
-            self.repository.update(item)
+        for repository in self.repositories:
+            repository.update_all()
 
     def rollback(self) -> None:
         pass
